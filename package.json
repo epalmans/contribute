@@ -14,16 +14,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/epalmans/contribute.git"
+    "url": "git+https://github.com/epalmans/helpwanted.git"
   },
   "author": "Eddie Palmans <eddie@palmans.nl> (https://github.com/epalmans)",
   "license": "MIT",
-  "homepage": "https://github.com/epalmans/contribute#readme",
+  "homepage": "https://github.com/epalmans/helpwanted#readme",
   "bugs": {
-    "url": "https://github.com/epalmans/contribute/issues"
+    "url": "https://github.com/epalmans/helpwanted/issues"
   },
   "preferGlobal": true,
-  "main": "./lib/contribute",
+  "main": "./lib/helpwanted",
   "bin": {
     "helpwanted": "./bin/helpwanted"
   },

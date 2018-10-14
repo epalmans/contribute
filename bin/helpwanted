@@ -2,7 +2,7 @@
 
 'use strict';
 
-const contribute = require('../lib/contribute'),
+const helpwanted = require('../lib/helpwanted'),
     logger = require('../lib/logger'),
     argv = require('minimist')(process.argv.slice(2)),
     subMonths = require('date-fns/sub_months'),
@@ -12,7 +12,7 @@ const contribute = require('../lib/contribute'),
 
 if (argv.h || argv.help) {
     logger.info([
-        'usage: contribute [options]',
+        'usage: helpwanted [options]',
         '',
         'options:',
         '  --username       Your Github account username. Skips prompt if supplied together with --password',
@@ -64,5 +64,5 @@ if (!argv.n && !argv.noauth) {
 }
 
 function run() {
-    contribute.scan(logger, scanOptions);
+    helpwanted.scan(logger, scanOptions);
 }
