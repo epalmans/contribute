@@ -1,0 +1,68 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const contribute = require('../lib/contribute'),
+    logger = require('../lib/logger'),
+    argv = require('minimist')(process.argv.slice(2)),
+    subMonths = require('date-fns/sub_months'),
+    format = require('date-fns/format'),
+    prompt = require('prompt');
+
+
+if (argv.h || argv.help) {
+    logger.info([
+        'usage: contribute [options]',
+        '',
+        'options:',
+        '  --username       Your Github account username. Skips prompt if supplied together with --password',
+        '  --password       Your Github account password. Skips prompt if supplied together with --username',
+        '  -n --noauth      Do not authenticate with GitHub',
+        '                   WARNING: errors may occur due to API rate limiting policies. See https://developer.github.com/v3/#rate-limiting',
+        '',
+        '  --since=YY-MM-DD Only show results after specified date [default: 4 months ago]',
+        '  -v --verbose     Verbose output logging',
+        '',
+        '  -h --help        Print this list and exit.'
+    ].join('\n'));
+    process.exit();
+}
+
+const since = argv.since || format(subMonths(new Date(), 4), 'YY-MM-DD');
+
+var scanOptions = { verbose: argv.v || argv.verbose, since };
+
+if (!argv.n && !argv.noauth) {
+    var prompt_attributes = [
+        {
+            name: 'username',
+            description: 'Your username',
+        },
+        {
+            name: 'password',
+            description: 'Your password',
+            hidden: true
+        }
+    ];
+    prompt.override = argv;
+
+    prompt.message = 'GitHub';
+    prompt.start();
+    prompt.get(prompt_attributes, (err, auth) => {
+
+        if (err) {
+            logger.error(`\n${err}`);
+            return 1;
+        }
+
+        scanOptions.auth = auth;
+        run();
+
+    });
+} else {
+    run();
+}
+
+function run() {
+    contribute.scan(logger, scanOptions);
+}

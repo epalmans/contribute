@@ -1,0 +1,49 @@
+{
+  "name": "helpwanted",
+  "version": "0.1.0",
+  "description": "Scans the repos of your project's packages for issues labelled 'help wanted'",
+  "keywords": [
+    "contribute",
+    "help",
+    "helpwanted",
+    "issues",
+    "community",
+    "opensource",
+    "github",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epalmans/contribute.git"
+  },
+  "author": "Eddie Palmans <eddie@palmans.nl> (https://github.com/epalmans)",
+  "license": "MIT",
+  "homepage": "https://github.com/epalmans/contribute#readme",
+  "bugs": {
+    "url": "https://github.com/epalmans/contribute/issues"
+  },
+  "preferGlobal": true,
+  "main": "./lib/contribute",
+  "bin": {
+    "helpwanted": "./bin/helpwanted"
+  },
+  "files": [
+    "lib",
+    "bin"
+  ],
+  "dependencies": {
+    "colors": "1.0.3",
+    "date-fns": "^1.29.0",
+    "minimist": "^1.2.0",
+    "prompt": "^1.0.0",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5"
+  },
+  "engines": {
+    "node": ">=5.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/helpwanted"
+  }
+}
