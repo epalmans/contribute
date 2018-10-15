@@ -2,12 +2,12 @@
 
 'use strict';
 
-const helpwanted = require('../lib/helpwanted'),
-    logger = require('../lib/logger'),
-    argv = require('minimist')(process.argv.slice(2)),
-    subMonths = require('date-fns/sub_months'),
-    format = require('date-fns/format'),
-    prompt = require('prompt');
+const helpwanted = require('../lib/helpwanted'), 
+ logger = require('../lib/logger'),
+ argv = require('minimist')(process.argv.slice(2)),
+ subMonths = require('date-fns/sub_months'),
+ format = require('date-fns/format'),
+ prompt = require('prompt');
 
 
 if (argv.h || argv.help) {
