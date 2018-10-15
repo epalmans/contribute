@@ -19,4 +19,5 @@ Simply run:
     helpwanted
 
 For each package, it will show all the open issues since the past 4 months with label 'help wanted' assigned.
+
 See all available options by running `helpwanted --help`.

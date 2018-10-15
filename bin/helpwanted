@@ -9,11 +9,14 @@ const helpwanted = require('../lib/helpwanted'),
  format = require('date-fns/format'),
  prompt = require('prompt');
 
-
 if (argv.h || argv.help) {
     logger.info([
-        'usage: helpwanted [options]',
+        'helpwanted v0.1.2',
+        'Shows GitHub issues labelled \'helpwanted\'for the dependencies used in your project',
         '',
+        'usage: helpwanted [file] [options]',
+        '',
+        'file:              Specific file to scan. Either package.json or composer.json (optional: both by default)',
         'options:',
         '  --username       Your Github account username. Skips prompt if supplied together with --password',
         '  --password       Your Github account password. Skips prompt if supplied together with --username',
@@ -30,7 +33,18 @@ if (argv.h || argv.help) {
 
 const since = argv.since || format(subMonths(new Date(), 4), 'YY-MM-DD');
 
-var scanOptions = { verbose: argv.v || argv.verbose, since };
+var scanOptions = { verbose: argv.v || argv.verbose, since, specificFile: null };
+
+if (argv._.length) {
+    const specificFile = argv._[0];
+
+    if (specificFile === 'package.json' || specificFile === 'composer.json') {
+        scanOptions.specificFile = specificFile;
+    } else {
+        logger.error(`Currently, only scanning of package.json or composer.json is supported.`);
+        return 1;
+    }
+}
 
 if (!argv.n && !argv.noauth) {
     var prompt_attributes = [

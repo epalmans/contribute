@@ -1,6 +1,6 @@
 {
   "name": "@epalmans/helpwanted",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Scans the repos of your project's packages for issues labelled 'help wanted'",
   "keywords": [
     "contribute",
