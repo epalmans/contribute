@@ -8,7 +8,7 @@ It checks their Github repositories for open issues for which community help is 
 
 Installation via `npm`:
 
-    npm install @epalmans/helpwanted -g
+    npm install helpwanted -g
 
 This will install `helpwanted` globally so that it may be run from the command line.
 
